@@ -77,10 +77,7 @@ exports.clientCreate = async function (req, res) {
         });
     if(req.file){
     clients2.avatar = req.file.path
-    }
-  
-    
-    
+    }    
     clients2.save()
     .then(item => {
         //res.send("item saved to database");
