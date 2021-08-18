@@ -73,6 +73,7 @@ exports.clientCreate = async function (req, res) {
         username:req.body.username,
         pass:req.body.pass,
         gender:req.body.gender,
+        date_naiss:req.body.dd,
         table:tablaux
         });
     if(req.file){

@@ -10,6 +10,10 @@ const clientSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    date_naiss: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         required: true
