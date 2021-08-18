@@ -67,7 +67,7 @@ exports.goodCode = async (req,res)=>{
 
 exports.clientCreate = async function (req, res) {
 
-    const tablaux = [{  item: "STYLE", qty: 0   },{  item: "FOOD", qty: 0   },{  item: "SPORT", qty: 0   },{  item: "TECH", qty: 0   },{  item: "OTHER", qty: 0   }]
+    const tablaux = [{  item: "STYLE", qty: 0   },{  item: "FOOD", qty: 0   },{  item: "SPORT", qty: 0   },{  item: "TECH", qty: 0   },{  item: "OTHER", qty: 0   },{item:"TRAVEL",qty:0}]
     const clients2 = new clients({
         mail:req.body.mail,
         username:req.body.username,
@@ -314,12 +314,12 @@ exports.affichTrasnac = async function(req,res){
 exports.TauxTransaction = async function(req,res){ 
     await clients.find({mail:req.body.mail},(err,rest)=>{
         let totale=0;
-        for(i=0;i<5;i++){
+        for(i=0;i<6;i++){
             totale += parseInt(rest[0].table[i].qty) 
         }
         console.log(totale)
         console.log(" STYLE = " + ((rest[0].table[0].qty*100)/totale) + " FOOD = " + ((rest[0].table[1].qty*100)/totale))
-        res.json(" STYLE = " + ((rest[0].table[0].qty*100)/totale) + " FOOD = " + ((rest[0].table[1].qty*100)/totale)+ " SPORT = " + ((rest[0].table[2].qty*100)/totale)+ " TECH = " + ((rest[0].table[3].qty*100)/totale)+ " OTHER = " + ((rest[0].table[4].qty*100)/totale) )
+        res.json(" STYLE = " + ((rest[0].table[0].qty*100)/totale) + " FOOD = " + ((rest[0].table[1].qty*100)/totale)+ " SPORT = " + ((rest[0].table[2].qty*100)/totale)+ " TECH = " + ((rest[0].table[3].qty*100)/totale)+" TRAVEL = " + ((rest[0].table[5].qty*100)/totale) + " OTHER = " + ((rest[0].table[4].qty*100)/totale) )
     })
 }
 
