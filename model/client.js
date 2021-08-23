@@ -51,6 +51,10 @@ const clientSchema = mongoose.Schema({
     avatar:{
         type:String,
         default:'uploads\\1628618800941.png'
+    },
+    created_AT:{
+        type: Date,
+        default: Date.now
     }
 })
 
