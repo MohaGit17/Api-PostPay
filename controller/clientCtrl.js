@@ -150,7 +150,7 @@ exports.afficheOneclient = async function(req,res){
             var userinfo = {}
             userinfo.username = rest[0].username
             userinfo.avatar = rest[0].avatar
-                res.json(userinfo)
+                res.json(userinfo + rest[0])
         }
 
     })
