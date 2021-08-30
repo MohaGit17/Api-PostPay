@@ -142,7 +142,7 @@ exports.filtre = async function (req,res){
     
 }
 
-exports.affichOneclient = async function(req,res){
+exports.afficheOneclient = async function(req,res){
     await clients.find({mail:req.body.mail}, function (err, rest) {
         if (err) {
             res.render('errorPage', { error: err })
