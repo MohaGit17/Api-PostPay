@@ -4,7 +4,7 @@ const clients = require('../model/client')
 
 exports.transCreate = async function (req, res) {
 
-    await clients.find({mail:req.body.from},(err,rest)=>{
+    await clients.find({mail:req.body.from},async (err,rest)=>{
         if(err){
             console.log('erreur'+err)
         }else if(rest[0]){
@@ -13,7 +13,7 @@ exports.transCreate = async function (req, res) {
                         res.json('Erreur: Blanace not can')
                     }else { 
                         console.log("good balance")
-                        clients.find({mail:req.body.to},(errr,restt)=>{
+                        await clients.find({mail:req.body.to},async (errr,restt)=>{
                             if(errr){
                                 console.log('errreur:'+errr)
                             }else{
@@ -37,13 +37,13 @@ exports.transCreate = async function (req, res) {
                                     }
                                      restt[0].balance = parseInt(restt[0].balance) + parseInt(req.body.price);
                                      rest[0].balance-=req.body.price;
-                                     trans2.save().then(item => {
+                                     await trans2.save().then(async (item) => {
                                     //res.send("item saved to database");
                                     console.log('success save data')
-                                    restt[0].TransactionsIN.push(item._id)
-                                    restt[0].save().then().catch()
-                                    rest[0].TransactionsOUT.push(item._id)
-                                    rest[0].save().then().catch()
+                                    await restt[0].TransactionsIN.push(item._id)
+                                    await restt[0].save().then().catch()
+                                    await rest[0].TransactionsOUT.push(item._id)
+                                    await rest[0].save().then().catch()
                                     res.json('succes save transaction')
                                     }).catch(error => {
                                     res.status(400).send("unable to save to database" + error);

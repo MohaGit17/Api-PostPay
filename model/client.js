@@ -12,7 +12,7 @@ const clientSchema = mongoose.Schema({
     },
     date_naiss: {
         type: String,
-        required: true
+        required: false
     },
     username: {
         type: String,
