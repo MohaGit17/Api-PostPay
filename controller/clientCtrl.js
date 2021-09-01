@@ -102,6 +102,19 @@ exports.affichclients = async function(req,res){
     })
 } 
 
+
+exports.affichallotofclients = async function(req,res){
+    await clients.find({mail : { $in: req.body.listOfClients } }, function (err, rest) {
+        if (err) {
+            res.render('errorPage', { error: err })
+        } else {
+                res.json(rest)
+        }
+
+    })
+} 
+
+
 exports.filtre = async function (req,res){
     let from=new Date(req.body.fromD)
     let to=new Date(req.body.toD)
@@ -129,12 +142,15 @@ exports.filtre = async function (req,res){
     
 }
 
-exports.affichOneclient = async function(req,res){
+exports.afficheOneclient = async function(req,res){
     await clients.find({mail:req.body.mail}, function (err, rest) {
         if (err) {
             res.render('errorPage', { error: err })
         } else {
-                res.json(rest[0])
+            var userinfo = {}
+            userinfo.username = rest[0].username
+            userinfo.avatar = rest[0].avatar
+                res.json(userinfo)
         }
 
     })

@@ -30,7 +30,7 @@ cliR.post('/Verifycode', clictrl.goodCode)
 cliR.post('/connect', clictrl.clientConnect)
 cliR.post('/creat',upload.single('avatar'), clictrl.clientCreate)
 cliR.post('/filtre',clictrl.filtre)
-cliR.post('/affichone',clictrl.affichOneclient) // AFFICHE LUI MEME (Page principale)
+cliR.post('/affichone',clictrl.afficheOneclient) // AFFICHE LUI MEME (Page principale)
 cliR.post('/affipers',clictrl.affichpersonne)   // AFFICHE AUTRE PERSSONE (Profil d'autre personne)
 cliR.post('/page2',clictrl.page2)     // page 2  (info sur ses finnace)
 
