@@ -27,7 +27,8 @@ exports.transCreate = async function (req, res) {
                                         desc:req.body.desc
                                      });
                                      
-                                    for(i=0;i<6;i++){
+                                    for(i=0;i<5;i++){
+                                        console.log(rest[0].table[i])
                                         if(rest[0].table[i].item == req.body.spending){
                                             console.log("la qyanrite actuel eest :" + rest[0].table[i].qty)
                                             let y = rest[0].table[i].qty + parseInt(req.body.price);
