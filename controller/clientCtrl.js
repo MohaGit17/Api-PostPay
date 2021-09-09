@@ -181,7 +181,17 @@ exports.clientConnect  = async function(req,res){
             if(rest[0]){
                 console.log(rest[0].pass)
                 if(rest[0].pass==req.body.pass){
-                    res.json(rest[0])
+                    let y ={}
+                    y.mail=rest[0].mail
+                    y.username=rest[0].username
+                    y.pass=rest[0].pass
+                    y.balance=rest[0].balance
+                    y.freind=rest[0].freind
+                    y.Vfriend=rest[0].Vfriend
+                    y.gender=rest[0].gender
+                    y.table=rest[0].table
+                    y.avatar=rest[0].avatar
+                    res.json(y)
                 }else{
                     res.json('Wrong pass')
                 }
