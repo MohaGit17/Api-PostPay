@@ -182,6 +182,7 @@ exports.clientConnect  = async function(req,res){
                 console.log(rest[0].pass)
                 if(rest[0].pass==req.body.pass){
                     let y ={}
+                    y.id=rest[0]._id
                     y.mail=rest[0].mail
                     y.username=rest[0].username
                     y.pass=rest[0].pass
