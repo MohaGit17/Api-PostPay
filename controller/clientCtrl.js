@@ -230,7 +230,7 @@ exports.affichFriends = async function(req,res){
                     console.log(err2)
                 }else{
                 for(i=0;i<res2.length;i++){
-                    let y={};y.f=res2[i];
+                    let y={};y.id=res2[i]._id;y.mail=res2[i].mail;y.username=res2[i].username;y.avatar=res2[i].avatar;
                     console.log(rest[0].Vfriend.includes(res2[i]._id))
                     y.v=rest[0].Vfriend.includes(res2[i]._id);
                     tab.push(y);
