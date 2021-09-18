@@ -224,6 +224,7 @@ exports.affichFriends = async function(req,res){
         if (err) {
             consoel.log( err )
         } else {
+            console.log(rest)
             let tab=[]
             clients.find({_id:{$in:rest[0].freind}},(err2,res2)=>{
                 if(err2){
@@ -248,7 +249,20 @@ exports.affichVFriends = async function(req,res){
         if (err) {
             res.render('errorPage', { error: err })
         } else {
-            res.json(rest[0].Vfriend)
+            
+            let tab=[]
+            clients.find({_id:rest[0].Vfriend},(err2,res2)=>{
+                if(err2){
+                    console.log(err2)
+                }else{
+                for(i=0;i<res2.length;i++){
+                    let y={};y.id=res2[i]._id;y.mail=res2[i].mail;y.username=res2[i].username;y.avatar=res2[i].avatar;
+                    tab.push(y);
+                }
+                res.json(tab)
+            }          
+            })
+            
         }
     })
     
@@ -282,7 +296,7 @@ exports.addVFriends = async function(req,res){ //friend id in req.body.id
 
 exports.removeFriends = async function(req,res){
     
-    await clients.findOneAndUpdate({mail:req.body.mail},{ $pull: { Vfriend : req.body.id }}, function (err, rest) {
+    await clients.findOneAndUpdate({mail:req.body.mail},{ $pull: { freind : req.body.id }}, function (err, rest) {
         if (err) {
             res.json(err)
         } else {

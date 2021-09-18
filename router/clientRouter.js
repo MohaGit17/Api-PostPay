@@ -11,6 +11,7 @@ cliR.get('/',(req,res)=>{
 
 cliR.get('/affich', clictrl.affichclients)
 cliR.post('/affichF',clictrl.affichFriends)
+cliR.post('/affichVF',clictrl.affichVFriends)
 cliR.post('/affichO',clictrl.affichNoFriends)
 cliR.post('/taux',clictrl.TauxTransaction)
 cliR.post('/transac',clictrl.affichTrasnac)
