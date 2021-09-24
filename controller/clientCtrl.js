@@ -93,8 +93,8 @@ exports.clientCreate = async function (req, res) {
 
 exports.affichclients = async function (req, res) {
     await clients.find({}, {
-        mail: 0, balance: 0, freind: 0,
-        Vfriend: 0, TransactionsIN: 0,
+        balance: 0, freind: 0,
+        TransactionsIN: 0,
         TransactionsOUT: 0, pass: 0,
         gender: 0, table: 0, created_AT: 0,
 
