@@ -331,6 +331,7 @@ exports.isVFriend =   async function (req,res){
         if (err) {
             consoel.log( err )
         } else {
+            console.log(rest[0].Vfriend.includes(req.body.id))
             res.json(rest[0].Vfriend.includes(req.body.id))
         }
 
