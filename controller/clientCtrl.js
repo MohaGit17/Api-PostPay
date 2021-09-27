@@ -92,19 +92,27 @@ exports.clientCreate = async function (req, res) {
 }
 
 exports.affichclients = async function (req, res) {
-    await clients.find({}, {
-        balance: 0, freind: 0,
-        TransactionsIN: 0,
-        TransactionsOUT: 0, pass: 0,
-        gender: 0, table: 0, created_AT: 0,
-
-    }, function (err, rest) {
+    await clients.find({ mail: req.body.mail }, function (err, rest) {
         if (err) {
-            res.render('errorPage', { error: err })
+            consoel.log(err)
         } else {
-            res.json(rest)
+            console.log(rest)
+            let tab = []
+            clients.find({}, (err2, res2) => {
+                if (err2) {
+                    console.log(err2)
+                } else {
+                    for (i = 0; i < res2.length; i++) {
+                        let y = {}; y.id = res2[i]._id; y.mail = res2[i].mail; y.username = res2[i].username; y.avatar = res2[i].avatar;
+                        console.log(rest[0].Vfriend.includes(res2[i]._id))
+                        y.f = rest[0].freind.includes(res2[i]._id);
+                        y.v = rest[0].Vfriend.includes(res2[i]._id);
+                        tab.push(y);
+                    }
+                    res.json(tab)
+                }
+            })
         }
-
     })
 }
 
